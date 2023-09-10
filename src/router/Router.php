@@ -25,7 +25,7 @@ class Router {
     public function getPath(): void {
         $this->uri = parse_url($this->uri, PHP_URL_PATH);
         $parts = explode("/", $this->uri);
-        $route = $parts[1];
+        $route = $parts[2];
 
         switch($route) {
 
@@ -41,7 +41,7 @@ class Router {
                 if(! $this->auth->authenticateAccessToken()) {
                     exit;
                 }
-                $param = $parts[2];
+                $param = $parts[3];
                 $user_id = $this->auth->user_id;
                 $this->subject_controller->handleSubject($this->method, $param, $user_id);
                 break;
@@ -50,7 +50,7 @@ class Router {
                 if(! $this->auth->authenticateAccessToken()){
                     exit;
                 }
-                $param = $parts[2];
+                $param = $parts[3];
                 $user_id = $this->auth->user_id;
                 $this->topic_controller->handleTopic($this->method, $param);
                 break;
@@ -59,7 +59,7 @@ class Router {
                 if(! $this->auth->authenticateAccessToken()){
                     exit;
                 }    
-                $param = $parts[2];
+                $param = $parts[3];
                 $user_id = $this->auth->user_id;
                 $this->list_controller->handleList($this->method, $param, $user_id);
                 break;
