@@ -38,6 +38,9 @@ if($_SERVER["REQUEST_METHOD"] === "OPTIONS"){
     exit;
 }
 
+echo "hello";
+exit;
+
 $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__ . "/..");
 $dotenv->load();
 
